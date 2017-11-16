@@ -1,0 +1,38 @@
+Semana 1 -- Introducción
+	-- Introdución a Xamarin
+	-- Bases de las estrategias para compartir codígo 
+	-- Instalación y un "Hola mundo"
+	-- Icons
+
+Usando Xamarin Forms
+
+Semana 2 -- Generación de interfaz vía código -- Layouts
+	-- Concepto de un View (Usando el botón como ejemplo)
+	-- StackLayout
+	-- Grid
+	-- ScrollLayout
+
+Semana 3 -- Generación de interfaz vía código -- Views
+	-- Label (TextView)
+	-- Entry (EditText)
+	-- Button 
+	-- Manejo de acciones
+	-- Manejo de mensajes al usuario
+	-- Cambio de pantallas con envio de parametros
+	-- Manejo de mensajes para debug
+
+Semana 4 -- Introducción a XAML
+	-- Implememtación de los layouts y views en XAML
+	-- Integración XAML con el codeBehind
+
+Semana 5 -- XAML with resources and styles
+	-- Resources
+	-- Page based styles
+	-- App bases styles
+
+Semana 6 -- ListView
+
+Semana 7 -- Local Storage
+
+Semana 8 -- Consuming REST-based Web Services 
+		-- Check network connectivity status / change
