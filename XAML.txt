@@ -1,0 +1,116 @@
+The Margin property represents the distance between an element and its adjacent elements, and is used to control the element's rendering position, and the rendering position of its neighbors. Margin values can be specified on layout and view classes.
+
+The Padding property represents the distance between an element and its child elements, and is used to separate the control from its own content. Padding values can be specified on layout classes.
+
+Padding="40"
+Margin="0,20,0,0”. Left, top, right, botton
+------------------------------------------------------------------------
+ <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Add New" Icon="ic_action_new.png" Clicked="OnAddNewBook" />
+    <ToolbarItem Text="Refresh" Icon="ic_autorenew.png" Clicked="OnRefresh" />
+  </ContentPage.ToolbarItems>
+------------------------------------------------------------------------
+Page resources  
+
+-- Static -- put inside contentPage
+<Page.Resources>
+        <ResourceDictionary>
+            <Color x:Key="bgColor">#c0c0c0</Color>
+            <Color x:Key="fgColor">#606060</Color>
+        </ResourceDictionary>
+</Page.Resources>
+and use like this TextColor="{StaticResource fgColor}"
+
+--Dynamic
+On code:
+	Resources["fgColor"] = Color.FromHex("#C0C0C0");
+user on XAML
+ 	TextColor="{DynamicResource fgColor}"
+
+-- Styles
+	the styles are placed inside the resourceDictonary
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <Style ..
+               <Setter Property="FontSize" Value="22" />
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+
+- Styles with name
+	 <Style x:Key="infoLabelStyle" TargetType="Label">
+	 </Style>
+
+- Styles without name
+
+- Styles that inharate from other styles
+	<Style x:Key="infoLabelStyle" BasedOn="{StaticResource baseLabelStyle}" TargetType="Label">
+    	<Setter Property="FontAttributes" Value="Bold" />
+	</Style>
+
+-- Styles across multiple pages
+	Add the style to the app.xaml.cs
+-------------------------------------------------------------------------
+StackLayout
+	<StackLayout 
+		Orientation="Horizontal" 
+		Margin="0,20,0,0">
+	</StackLayout>
+
+
+HorizontalOptions/VerticalOptions=
+	"CenterAndExpand"	"Center"  
+	"EndAndExpand"		"End"
+	"FillAndExpand"		"Fill"
+	"StartAndExpand"	"Start"
+
+-------------------------------------------------------------------------
+Grid
+		<Grid>
+
+        	<Grid.RowDefinitions>
+	            <RowDefinition Height="Auto" />
+    	        <RowDefinition Height="*" />
+
+        	</Grid.RowDefinitions>
+
+        	<Grid.ColumnDefinitions>
+	            <ColumnDefinition Width="*" />
+    	        <ColumnDefinition Width="*" />
+	        </Grid.ColumnDefinitions>
+
+	       < ... views...
+       			Grid.Row="0"
+                Grid.Column="0"
+            />
+
+            < ...views...
+       			Grid.Row="0"
+                Grid.Column="1"
+            />
+       	</Grid>
+
+---------------------------------------------------------------------------
+ListView
+  <ListView ItemsSource="{Binding}"
+          ItemTapped="OnEditBook">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <TextCell Text="{Binding Title}" Detail="{Binding Genre}">
+          <TextCell.ContextActions>
+            <MenuItem Clicked="OnDeleteBook"
+                CommandParameter="{Binding}"
+                Text="Delete" IsDestructive="True" />
+          </TextCell.ContextActions>
+        </TextCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+
+---------------------------------------------------------------------------
+     <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness"
+                iOS="0, 20, 0, 0" />
+  </ContentPage.Padding>
+
